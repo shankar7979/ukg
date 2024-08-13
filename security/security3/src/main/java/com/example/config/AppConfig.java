@@ -23,12 +23,35 @@ public class AppConfig {
         return NoOpPasswordEncoder.getInstance();
     }
 
-
     @Bean
+    SecurityFilterChain getSecurityFilterChain(HttpSecurity http) throws Exception{
+//        http.httpBasic(Customizer.withDefaults()).authorizeHttpRequests(c->c.anyRequest().authenticated());
+        http.formLogin(Customizer.withDefaults()).authorizeHttpRequests(c->c.anyRequest().authenticated());
+        var user=User.withUsername("ram").password("shyam").authorities("read").build();
+
+        http.userDetailsService(new InMemoryUserDetailsManager(user));
+       return  http.build();
+    }
+
+/*
+    @Bean
+    SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        UserDetails userDetails = User.withUsername("ram").password("abcd").build();
+        User.UserBuilder userBuilder = User.withUsername("ram").password("abcd").authorities("read");
+        UserDetails build = userBuilder.build();
+
+        //return  httpSecurity.httpBasic(Customizer.withDefaults()).build();
+
+        return httpSecurity.userDetailsService(new InMemoryUserDetailsManager(build)).build();
+    }
+*/
+
+    /*@Bean
     public UserDetailsService getUserDetailsService(){
         var user=User.withUsername("ram").password("abcd").authorities("read","write").build();
         return  new InMemoryUserDetailsManager(user);
     }
+    */
 
 /*    @Bean
     public UserDetailsService userDetailsService(DataSource dataSource){
@@ -43,5 +66,4 @@ public class AppConfig {
         jdbcUserDetailsManager.setUsersByUsernameQuery("");
     }
 */
-
 }
