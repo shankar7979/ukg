@@ -37,8 +37,10 @@ public class CustomerService {
         if (repository.findById(customer.getId()).isEmpty())
             throw new CustomerException("id not present");
         else {
-            for (Product p : customer.getProductSet())
+            for (Product p : customer.getProductSet()) {
                 productRepository.save(p);
+            }
+
             return repository.save(customer);
         }
     }
