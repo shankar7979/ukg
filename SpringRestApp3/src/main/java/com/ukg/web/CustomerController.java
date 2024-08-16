@@ -20,11 +20,10 @@ public class CustomerController {
     @Autowired
     private CustomerService service;
 
-
     @RequestMapping("/all")
     public ResponseEntity<List<Customer>> getAllCustomer() {
         try {
-            return new ResponseEntity<List<Customer>>(service.getAllCustomer(), HttpStatus.OK);
+            return new ResponseEntity<List<Customer>>(service.getAllCustomer(), HttpStatus.FOUND);
         } catch (CustomerException e) {
             return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
         }
