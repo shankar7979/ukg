@@ -53,8 +53,6 @@ public class CustomerControllerTest {
     HttpStatusCode statusCode = allCustomer.getStatusCode();
     Assertions.assertEquals(statusCode, HttpStatus.FOUND);
 }
-
-
 }
 //https://stackoverflow.com/questions/71766354/spring-boot-restcontroller-autowired-null-in-unit-tests
 //https://spring.io/guides/gs/testing-web
