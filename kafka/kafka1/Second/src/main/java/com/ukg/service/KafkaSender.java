@@ -13,7 +13,6 @@ public class KafkaSender {
 	String kafkaTopic = "ukg-topic";
 	
 	public void send(String data) {
-	    
 	    kafkaTemplate.send(kafkaTopic, data);
 	}
 }
