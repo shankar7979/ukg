@@ -36,3 +36,6 @@ services:
 networks:
   springmysql:
     name: springmysql
+
+# working curl.exe  http://localhost:9090/all
+
