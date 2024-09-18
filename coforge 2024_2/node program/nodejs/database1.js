@@ -16,7 +16,7 @@ connection.connect((err)=>{
             throw err;
         console.log(result)
     })
-    
+
     connection.query("select * from employee",(err,result)=>{
         if(err)
             throw err;
@@ -25,8 +25,6 @@ connection.connect((err)=>{
             console.log(data.id+"\t"+data.name+"\t"+data.salary )
         });
     })
-
-    
 
    }
 )
