@@ -18,7 +18,5 @@ public class Employee implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Address address;
 
-
     //Many Employee with on address
-
 }

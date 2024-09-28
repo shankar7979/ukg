@@ -33,7 +33,6 @@ public class Main implements CommandLineRunner {
         Employee employee2 = new Employee();
         Employee employee3 = new Employee();
 
-
         employee1.setName("ram kumar");
         employee2.setName("shyam kumar");
         employee3.setName("anand kumar");
