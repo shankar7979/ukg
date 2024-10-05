@@ -6,18 +6,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/user")
 public class UserController  {
 
     @Autowired
     UserRepo userRepo;
 
-    @GetMapping("/user")
+    @GetMapping("/all")
     public List<User1> userList(){
         return  userRepo.findAll();
     }
 
-    @PostMapping("/user")
+    @PostMapping("/new")
     public User1 addUser(@RequestBody User1 user){
        return userRepo.save(user);
     }
