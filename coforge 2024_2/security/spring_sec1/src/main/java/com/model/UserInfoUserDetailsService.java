@@ -12,11 +12,11 @@ import java.util.Optional;
 public class UserInfoUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private UserRepo repository;
+    private PersonRepo repository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User1> userInfo = repository.findByName(username);
+        Optional<Person> userInfo = repository.findByName(username);
         if(userInfo.isPresent()){
             return new UserInfoUserDetails(userInfo.get());
         }

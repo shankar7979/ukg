@@ -6,18 +6,18 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class UserMain implements CommandLineRunner {
+public class PersonMain implements CommandLineRunner {
 
     public static void main(String[] args) {
-        SpringApplication.run(UserMain.class,args);
+        SpringApplication.run(PersonMain.class,args);
     }
 
     @Autowired
-    UserController userController;
+    PersonController userController;
 
     @Override
     public void run(String... args) throws Exception {
-     userController.addUser(User1.builder().name("amit kumar").password("abcd").roles("ADMIN").build());
-        userController.userList().forEach(System.out::println);
+     userController.addPerson(Person.builder().name("amit kumar").password("abcd").roles("ADMIN").build());
+        userController.personList().forEach(System.out::println);
     }
 }

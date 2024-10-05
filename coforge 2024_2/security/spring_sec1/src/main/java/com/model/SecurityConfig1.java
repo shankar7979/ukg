@@ -17,7 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
-public class UserConfig1 {
+public class SecurityConfig1 {
 
     @Bean
    public  PasswordEncoder passwordEncoder(){
@@ -29,8 +29,8 @@ public class UserConfig1 {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/user/all","/user/new").permitAll()
-                                .requestMatchers("/user/**")
+                        auth.requestMatchers("/person/all","/person/new").permitAll()
+                                .requestMatchers("/person/**")
                                 .authenticated()
                 )
                 .httpBasic(Customizer.withDefaults()).build();
