@@ -2,37 +2,46 @@ package com.javatechie;
 
 import com.javatechie.controller.ProductController;
 import com.javatechie.entity.UserInfo;
+import org.hibernate.dialect.MySQLDialect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.Arrays;
-
 @SpringBootApplication
 public class SpringSecurityLatestApplication  implements CommandLineRunner {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
+		SpringApplication.run(SpringSecurityLatestApplication.class, args);
+	}
 
-        SpringApplication.run(SpringSecurityLatestApplication.class, args);
+	@Autowired
+	ProductController productController;
 
-    }
+	@Override
+	public void run(String... args) throws Exception {
+		productController.addNewUser(UserInfo.builder().name("sumit").email("sumit@gmail.com").password("abcd").roles("ROLE_ADMIN").build());
+		productController.addNewUser(UserInfo.builder().name("amit").email("amit@gmail.com").password("abcd").roles("ROLE_USER").build());
+		//productController.getAllTheProducts().forEach(System.out::println);
+	}
 
-    @Autowired
-    ProductController productController;
-
-    @Override
-    public void run(String... args) throws Exception {
-        productController.addNewUser(UserInfo.builder().name("ram kumar").email("ram@gmail.com").roles("USER").password("abcd").build());
-        productController.addNewUser(UserInfo.builder().name("shyam kumar").email("ram@gmail.com").roles("ADMIN").password("abcd").build());
-
-         Arrays.asList(new UserInfo[]{
-                 UserInfo.builder().name("ram kumar").email("ram@gmail.com").roles("user").password("abcd").build(),
-                 UserInfo.builder().name("ram kumar").email("ram@gmail.com").roles("user").password("abcd").build(),
-         });
-    }
 }
-//ProductController -- comment @PreAuthorize
-//http://localhost:9192/products/welcome
-//http://localhost:9192/products/all
+/*
+POSTMAN
+localhost:8080/products/new
+post METHOD
+{ "name":"mohan",
+  "email":"mohan@gmail.com",
+  "password":"mohan",
+   "roles":"ROLE_ADMIN"
+}
+{ "name":"sohan",
+  "email":"sohan@gmail.com",
+  "password":"sohan",
+   "roles":"ROLE_USER"
+}
 
+
+http://localhost:8080/products/all
+
+ */
