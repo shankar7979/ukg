@@ -20,11 +20,10 @@ public class SpringSecurityLatestApplication  implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		productController.addNewUser(UserInfo.builder().name("sumit").email("sumit@gmail.com").password("abcd").roles("ROLE_ADMIN").build());
-		productController.addNewUser(UserInfo.builder().name("amit").email("amit@gmail.com").password("abcd").roles("ROLE_USER").build());
+		productController.addNewUser(UserInfo.builder().name("amit").email("sumit@gmail.com").password("abcd").roles("ROLE_ADMIN").build());
+		productController.addNewUser(UserInfo.builder().name("sumit").email("amit@gmail.com").password("abcd").roles("ROLE_USER").build());
 		//productController.getAllTheProducts().forEach(System.out::println);
 	}
-
 }
 /*
 POSTMAN
