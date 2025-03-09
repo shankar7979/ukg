@@ -89,3 +89,26 @@ https://minikube.sigs.k8s.io/docs/tutorials/docker_desktop_replacement/
 https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download
 https://numericaideas.com/blog/deploying-springboot-app-with-docker-and-kubernetes/
 
+minikube
+
+https://www.youtube.com/watch?v=M5BrbCVRxPY
+
+java techie
+https://www.youtube.com/watch?v=xhxmExC9N1U&t=610s
+
+
+https://github.com/Java-Techie-jt/springboot-k8s-example
+
+https://github.com/AndriyKalashnykov/spring-microservices-k8s
+https://www.youtube.com/watch?v=M5BrbCVRxPY
+
+minikube on docker desktop
+
+https://www.youtube.com/watch?v=zudtloZ8c9w
+
+
+===========minikube ==
+https://www.youtube.com/watch?v=xhxmExC9N1U&t=610s
+javaetchie
+
+>minikube start --driver=docker
