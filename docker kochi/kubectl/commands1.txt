@@ -112,3 +112,51 @@ https://www.youtube.com/watch?v=xhxmExC9N1U&t=610s
 javaetchie
 
 >minikube start --driver=docker
+
+allow kubernetees to read docker repo add command 
+
+minikube docker-env
+copy output last line
+@FOR /f "tokens=*" %i IN ('minikube -p minikube docker-env --shell cmd') DO @%i
+ now kubenetes can read docker repo
+docker images 
+
+
+
+
+minikube status 
+kubectl cluster-info
+
+kubectl  get node
+
+minikube docker-env
+
+
+run app inside pods 
+C:\test1\kubernetes\docker kochi\SpringRestApp1>docker build -t springrestapp1 .
+
+  push image to dockerhub
+
+$ docker login -u "myusername" -p "mypassword" docker.io
+$ docker push projetofinal2_web 
+
+
+C:\test1\kubernetes\docker kochi\SpringRestApp1>docker login -u  "shankar2929"  -p "9210721663" docker.io
+--
+docker push springrestapp1
+
+below image not present on dockerhub 
+kubectl create deployment spring-boot-k8s --image=springrestapp1 --port=7070
+deployment.apps/spring-boot-k8s created
+
+>kubectl create deployment spring-boot-k81 --image=spring1 --port=7070 
+
+kubectl get  deployment
+
+>kubectl describe  deployment spring-boot-k81
+C:\test1\kubernetes\docker kochi\SpringRestApp1>kubectl describe  deployment spring-boot-k81
+
+kubectl get pods 
+kubectl log podname
+
+kubectl log spring-boot-k8s-7ff6585bcb-5xhrr
