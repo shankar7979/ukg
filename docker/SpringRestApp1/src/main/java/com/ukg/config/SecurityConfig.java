@@ -18,7 +18,6 @@ import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
 @EnableWebSecurity
-
 public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -28,30 +27,36 @@ public class SecurityConfig {
                                 .requestMatchers("/**").
                                 hasRole("USER")
                 )
-                .httpBasic(withDefaults());
-                //.formLogin(withDefaults());
+                //.httpBasic(withDefaults());
+                .formLogin(withDefaults());
         http.csrf(c->c.disable());
         return http. build();
     }
 
     @Bean
     public UserDetailsService userDetailsService() {
-        UserDetails user = User.withDefaultPasswordEncoder()
-                .username("user")
+        // UserDetails user = User.withDefaultPasswordEncoder()
+        //         .username("user")
+        //         .password("password")
+        //         .roles("USER")
+        //         .build();
+                UserDetails user = User.withUsername("user")
                 .password("password")
                 .roles("USER")
                 .build();
-        UserDetails admin = User.withDefaultPasswordEncoder()
-                .username("admin")
+                
+        UserDetails admin =
+         //User.withDefaultPasswordEncoder().username("admin")
+         User.withUsername("admin")
                 .password("password")
                 .roles("ADMIN", "USER")
                 .build();
         return new InMemoryUserDetailsManager(user,admin);
     }
 
-//@Bean
-//    public PasswordEncoder passwordEncoder() {
-//        return NoOpPasswordEncoder.getInstance();
-//    }
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return NoOpPasswordEncoder.getInstance();
+    }
 
 }
