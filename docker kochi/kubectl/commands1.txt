@@ -1,0 +1,162 @@
+docker version
+
+kubectl version
+
+
+--
+Create a YAML file, `sample-deployment.yaml`, with the following contents:
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sample-app
+  template:
+    metadata:
+      labels:
+        app: sample-app
+    spec:
+      containers:
+        - name: sample-container
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+Apply the deployment to the Kubernetes cluster:
+kubectl apply -f sample-deployment.yaml
+
+---
+
+
+
+kubectl get pods
+
+kubectl get svc
+
+kubectl dashboard
+
+kubectl proxy
+Which will let you access the dashboard at:
+
+localhost:8001
+
+kubectl config get-contexts
+
+kubectl config use-context <context-name>
+kubectl config use-context docker-desktop
+
+kubectl get nodes
+
+Deploy the sample voting app:
+kubectl apply -f https://raw.githubusercontent.com/docker/docker-birthday/master/resources/kubernetes-docker-desktop/vote.yaml
+
+
+
+//https://sudipta-deb.in/2023/02/how-to-run-kubernetes-locally-in-docker-desktop.html
+
+//https://birthday.play-with-docker.com/kubernetes-docker-desktop/
+
+kubectl get nodes
+
+docker container ls
+//https://github.com/dockersamples/docker-fifth-birthday
+
+//https://medium.com/@bubu.tripathy/containerize-and-deploy-a-spring-boot-application-in-a-kubernetes-cluster-6dfe0a1a4b15
+https://medium.com/@AlexanderObregon/containerizing-spring-boot-applications-with-docker-and-kubernetes-d040648c07ba
+
+https://github.com/TechPrimers/k8s-spring-boot-example
+https://github.com/piomin/sample-spring-microservices-kubernetes
+
+Grafana, MySQL , Prometheus
+spring Boot, MySQL, JUnit, AOP, Jacoco, Prometheus,Grafana, Docker, Kubernetes, Github Action (CI/CD))
+https://github.com/Rapter1990/workpermission
+
+https://github.com/hetal28/shopping-api
+
+MySQL 
+https://github.com/ashutoshsahoo/spring-boot-kubernetes-mysql
+
+https://github.com/kemanedonfack/deploying-springboot-app-with-docker-and-kubernetes
+
+https://docs.docker.com/desktop/features/kubernetes/
+https://learnk8s.io/spring-boot-kubernetes-guide
+
+
+https://minikube.sigs.k8s.io/docs/drivers/docker/
+https://minikube.sigs.k8s.io/docs/tutorials/docker_desktop_replacement/
+https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download
+https://numericaideas.com/blog/deploying-springboot-app-with-docker-and-kubernetes/
+
+minikube
+
+https://www.youtube.com/watch?v=M5BrbCVRxPY
+
+java techie
+https://www.youtube.com/watch?v=xhxmExC9N1U&t=610s
+
+
+https://github.com/Java-Techie-jt/springboot-k8s-example
+
+https://github.com/AndriyKalashnykov/spring-microservices-k8s
+https://www.youtube.com/watch?v=M5BrbCVRxPY
+
+minikube on docker desktop
+
+https://www.youtube.com/watch?v=zudtloZ8c9w
+
+
+===========minikube ==
+https://www.youtube.com/watch?v=xhxmExC9N1U&t=610s
+javaetchie
+
+>minikube start --driver=docker
+
+allow kubernetees to read docker repo add command 
+
+minikube docker-env
+copy output last line
+@FOR /f "tokens=*" %i IN ('minikube -p minikube docker-env --shell cmd') DO @%i
+ now kubenetes can read docker repo
+docker images 
+
+
+
+
+minikube status 
+kubectl cluster-info
+
+kubectl  get node
+
+minikube docker-env
+
+
+run app inside pods 
+C:\test1\kubernetes\docker kochi\SpringRestApp1>docker build -t springrestapp1 .
+
+  push image to dockerhub
+
+$ docker login -u "myusername" -p "mypassword" docker.io
+$ docker push projetofinal2_web 
+
+
+C:\test1\kubernetes\docker kochi\SpringRestApp1>docker login -u  "shankar2929"  -p "9210721663" docker.io
+--
+docker push springrestapp1
+
+below image not present on dockerhub 
+kubectl create deployment spring-boot-k8s --image=springrestapp1 --port=7070
+deployment.apps/spring-boot-k8s created
+
+>kubectl create deployment spring-boot-k81 --image=spring1 --port=7070 
+
+kubectl get  deployment
+
+>kubectl describe  deployment spring-boot-k81
+C:\test1\kubernetes\docker kochi\SpringRestApp1>kubectl describe  deployment spring-boot-k81
+
+kubectl get pods 
+kubectl log podname
+
+kubectl log spring-boot-k8s-7ff6585bcb-5xhrr

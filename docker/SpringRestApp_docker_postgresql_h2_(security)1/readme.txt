@@ -3,7 +3,7 @@ sudo docker run --name postgres -e POSTGRES_PASSWORD=postgres -d -p 5432:5432 po
 sudo docker ps -a   get all container id 
     take container id and use below to execute the container 
 
-docker exec -it  containerid  bash
+docker exec -it  containerid bash
 psql -U postgres
 
 

@@ -1,0 +1,123 @@
+How To Use Docker Desktop To Deploy Kubernetes Clusters ?
+Last Updated : 12 Feb, 2024
+Docker Desktop has revolutionized local development environments by seamlessly integrating Kubernetes, a powerful container orchestration platform. This article gives an idea of how to use Docker Desktop to deploy Kubernetes clusters, which also includes step-by-step instructions and troubleshooting advice. This thorough instruction will enable you to fully utilize Kubernetes on your local system, regardless of your level of experience with containerization.
+
+Understanding Docker Desktop And Kubernetes Integration
+Docker Desktop has a standalone Kubernetes server and client that is integrated with the Docker CLI. It facilitates the deployment of Kubernetes clusters directly on your local machine, eliminating the need for external resources during development and testing. The Kubernetes server within Docker Desktop is a single-node cluster running within a Docker container, designed for local testing and deployment.
+
+Deploying Kubernetes Clusters With Docker Desktop
+The following are the steps to deploy a Kubernetes cluster with a Docker Desktop:
+
+Step 1: Verifying Docker Desktop Installation
+To ensure Docker Desktop is installed correctly, open a terminal or command prompt and run.
+This command should display information about the installed Docker version.
+docker version
+Step 2: Enabling Kubernetes In Docker Desktop
+Open the Docker Dashboard.
+Select "Settings" from the left sidebar.
+Navigate to the "Kubernetes" tab.
+Check the "Enable Kubernetes" checkbox.
+Click "Apply & Restart" to save settings and then select "Install" to instantiate the required images for the Kubernetes server.
+Enabling Kubernetes on Docker Desktop
+
+Step 3: Verifying Kubernetes Installation
+Check the Kubernetes installation by running the `kuberbetes version`.
+This command should display the Kubernetes client and server version, indicating a successful installation.
+kubectl version
+Step 4: Deploying A Sample Application
+Create a YAML file, `sample-deployment.yaml`, with the following contents:
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: sample-app
+  template:
+    metadata:
+      labels:
+        app: sample-app
+    spec:
+      containers:
+        - name: sample-container
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+Apply the deployment to the Kubernetes cluster:
+kubectl apply -f sample-deployment.yaml
+Deploying a sample application
+
+Step 5: Checking Deployment Status
+Monitor the kubernetes deployment status with:
+
+kubectl get pods
+Listing kubernetes PodsStep 6: Accessing The Deployed Application
+Retrieve the external IP address of the deployed application:
+kubectl get svc
+Listing Kubernetes ServicesAccess the application in a web browser using the provided external IP address.
+
+Exploring Docker Desktop's Kubernetes Features
+Docker Desktop offers several features to enhance the Kubernetes development experience. The following are the some of the features of Docker Desktop's Kubernetes:
+
+1. Dashboard Integration
+Access the Kubernetes dashboard with following kubectl command:
+kubectl dashboard
+The dashboard provides a graphical interface for managing and visualizing your clusters.
+Kubernetes - dashboard
+
+2. Resource Management
+Adjust resource allocation for your Kubernetes cluster from Docker Desktop settings, specifying the number of CPUs and the amount of memory.
+Adjusting k8s cluster resources in Docker Desktop
+
+3. Kubernetes Context Switching
+Switch between different Kubernetes contexts:
+kubectl config get-contexts
+kubectl config use-context <context-name>
+This is useful when working with multiple clusters.
+kubernertes configurations
+
+Understanding The Kubernetes With Docker Desktop
+1. Kubernetes Components: Docker Desktop integrates with Kubernetes, managing components such as the API server, controller manager, scheduler, and etcd, all encapsulated within Docker containers.
+
+2. kubectl Command Usage: Docker Desktop provides the Kubernetes CLI command at `/usr/local/bin/kubectl` on Mac and `C:\Program Files\Docker\Docker\Resources\bin\kubectl.exe` on Windows.
+
+kubectl get nodes
+Listing Nodes in Kubernetes ClusterEnsure that `kubectl` points to the Docker Desktop context:
+kubectl config use-context docker-desktop
+Expected output shall be similar to: Switched to context "docker-desktop".
+3. Accessing Kubernetes Dashboard: Open the Kubernetes dashboard to visualize and manage your clusters:
+
+kubectl dashboard
+4. Upgrading Kubernetes Cluster: Docker Desktop does not automatically upgrade your Kubernetes cluster. To upgrade, select "Reset Kubernetes Cluster" in the Docker Dashboard.
+
+Deploying A Sample Voting Application
+Let's deploy a more complex application - the classic Docker sample voting app - to further explore Docker Desktop's capabilities.
+
+Step 1: Enable Kubernetes In Docker Desktop
+Navigate to Docker Desktop settings.
+Click on "Kubernetes"
+Check the "Enable Kubernetes" checkbox.
+Step 2: Verify Kubernetes Cluster
+Check the state of your Docker Desktop cluster with the following command.
+kubectl get nodes
+Step 3: Run The Voting App
+Deploy the sample voting app:
+kubectl apply -f https://raw.githubusercontent.com/docker/docker-birthday/master/resources/kubernetes-docker-desktop/vote.yaml
+Step 4: Check App Components
+Check the pods for the voting app with the following command:
+kubectl -n vote get pods
+Step 5: Use the App
+Access the voting app in your browser at http://localhost:5000
+Vote for Cats or Dogs, and check the results at http://localhost:5001
+Step 6: Check Resilience
+Test Kubernetes' resilience by removing a container with following command.
+Observe that Kubernetes replaces the removed container.
+docker container rm -f $(docker container ls -f name='k8s_result*' --format '{{.ID}}')
+Step 7: Teardown Your Environment
+Reset your Kubernetes cluster and remove the demo app:
+
+Open Docker Desktop settings.
+Click on "Kubernetes."
+Click the "Reset Kubernetes Cluster" button.
